@@ -3,6 +3,9 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+
+
+    stages {
     stage('Compile') {
        steps {
          sh 'mvn compile' //only compilation of the code
@@ -19,6 +22,8 @@ pipeline {
           // place other parameters here
         )
       }
+    }
+
     }
 }
 
