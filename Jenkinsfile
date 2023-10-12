@@ -1,15 +1,18 @@
 pipeline {
     agent any
+    tools {
+    maven 'M3'
+  }
     triggers {
         pollSCM '* * * * *'
     }
 
 
     stages {
-    stage('Compile') {
-       steps {
-         sh 'mvn compile' //only compilation of the code
-       }
+      stage('Compile') {
+         steps {
+           sh 'mvn compile' //only compilation of the code
+          }
     }
 
 
