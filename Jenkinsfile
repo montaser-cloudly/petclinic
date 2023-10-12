@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    tools {
-    maven 'M3'
-  }
+    tools{
+        maven '3.9.1'
+    }
     triggers {
         pollSCM '* * * * *'
     }
