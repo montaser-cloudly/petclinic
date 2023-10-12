@@ -1,8 +1,10 @@
 pipeline {
     agent any
     tools{
+        jdk ‘java-17’
         maven '3.9.1'
     }
+    
     triggers {
         pollSCM '* * * * *'
     }
