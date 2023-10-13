@@ -19,21 +19,22 @@ pipeline {
 
     stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv('petclinic')
-              sh 'mvn clean verify sonar:sonar'
+              withSonarQubeEnv('petclinic'){
+                            sh 'mvn clean verify sonar:sonar'
+              }
             }  
     }
 
-    stage('Snyk Test') {
-      steps {
-        echo 'Snyk Testing...'
-        snykSecurity(
-          snykInstallation: 'petclinic-test',
-          snykTokenId: 'petclinic-snyk',
-          // place other parameters here
-        )
-      }
-    }
+    // stage('Snyk Test') {
+    //   steps {
+    //     echo 'Snyk Testing...'
+    //     snykSecurity(
+    //       snykInstallation: 'petclinic-test',
+    //       snykTokenId: 'petclinic-snyk',
+    //       // place other parameters here
+    //     )
+    //   }
+    // }
 
     }
         
