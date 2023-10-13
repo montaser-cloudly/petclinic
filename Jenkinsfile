@@ -19,8 +19,8 @@ pipeline {
 
     stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv('petclinic'){
-                            sh 'mvn clean verify sonar:sonar'
+              withSonarQubeEnv(installationName: 'petclinic'){
+                 sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
               }
             }  
     }
