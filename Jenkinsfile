@@ -17,10 +17,16 @@ pipeline {
           }
     }
 
+    stage('SonarQube Analysis') {
+            steps {
+              withSonarQubeEnv('petclinic')
+              sh 'mvn clean verify sonar:sonar'
+            }  
+    }
 
-    stage('Test') {
+    stage('Snyk Test') {
       steps {
-        echo 'Testing...'
+        echo 'Snyk Testing...'
         snykSecurity(
           snykInstallation: 'petclinic-test',
           snykTokenId: 'petclinic-snyk',
@@ -30,8 +36,33 @@ pipeline {
     }
 
     }
-}
+        
+}                
+        // stage("Quality Gate"){
+        //     steps{
+        //         script{
+        //             TEMP_STAGE_NAME=env.STAGE_NAME
+        //             timeout(time: 1, unit: 'HOURS') 
+        //             {
+        //                 waitForQualityGate abortPipeline: true
+        //                 def qg= waitForQualityGate()
+        //                 if (qg.status!= 'OK'){
+        //                     error "Pipeline aborted due to quality gate failure: ${qg.status}"
+        //                 }
+        //             }         
+        //             echo 'Quality Gate Passed' 
+        //         }
+        //     }
+        // }
 
+
+
+
+
+//     }
+// }
+
+// }
 
 
     
