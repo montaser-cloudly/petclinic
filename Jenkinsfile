@@ -20,7 +20,7 @@ pipeline {
     stage('SonarQube Analysis') {
             steps {
               withSonarQubeEnv(installationName: 'petclinic'){
-                 sh 'mvn clear verify soanr:sonar'
+                 sh 'mvn clear verify sonar:sonar'
               }
             }  
     }
