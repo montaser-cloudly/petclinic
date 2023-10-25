@@ -25,16 +25,28 @@ pipeline {
             }  
     }
 
-     stage('Snyk Test') {
-       steps {
-        echo 'Snyk Testing...'
-         snykSecurity(
-           snykInstallation: 'petclinic-test',
-           snykTokenId: 'petclinic-snyk',
-           // place other parameters here
-         )
-       }
-     }
+    //  stage('Snyk Test') {
+    //    steps {
+    //     echo 'Snyk Testing...'
+    //      snykSecurity(
+    //        snykInstallation: 'petclinic-test',
+    //        snykTokenId: 'petclinic-snyk',
+    //        // place other parameters here
+    //      )
+    //    }
+    //  }
+
+stage('Build Docker Images') {
+       //dockerImage = docker.build("muntaseri/petclinic:latest")
+       sh 'mvn clean install -P buildDocker'
+    }
+
+
+
+
+
+
+
 
     }
         
