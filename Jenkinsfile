@@ -25,21 +25,26 @@ pipeline {
             }  
     }
 
-    // stage('Snyk Test') {
-    //   steps {
-    //     echo 'Snyk Testing...'
-    //     snykSecurity(
-    //       snykInstallation: 'petclinic-test',
-    //       snykTokenId: 'petclinic-snyk',
-    //       // place other parameters here
-    //     )
-    //   }
-    // }
+     stage('Snyk Test') {
+       steps {
+        echo 'Snyk Testing...'
+         snykSecurity(
+           snykInstallation: 'petclinic-test',
+           snykTokenId: 'petclinic-snyk',
+           // place other parameters here
+         )
+       }
+     }
 
     }
         
 }                
-        // stage("Quality Gate"){
+
+
+
+
+
+// stage("Quality Gate"){
         //     steps{
         //         script{
         //             TEMP_STAGE_NAME=env.STAGE_NAME
